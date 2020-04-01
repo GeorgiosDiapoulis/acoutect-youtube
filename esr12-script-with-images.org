@@ -1,0 +1,89 @@
+#+name: setup
+#+begin_src emacs-lisp :results silent :exports none
+(unless (find "per-file-class" org-latex-classes :key 'car
+          :test 'equal)
+  (add-to-list 'org-latex-classes
+           '("per-file-class"
+              "\\documentclass[a4paper,12pt,oneside]{article}
+               \\usepackage[T1]{fontenc}
+               \\usepackage[applemac]{inputenc}%for Mac
+               \\usepackage[english]{babel}
+               \\usepackage[landscape, left=2.0cm, right=2.0cm, top=2cm, bottom=2cm, headsep=0.5cm, headheight=0.5cm]{geometry}
+               \\usepackage{floatrow}
+               \\usepackage{tabularx}
+               \\usepackage{hhline}
+               \\usepackage{floatrow}
+               \\usepackage[section]{placeins}
+               \\usepackage{fancyhdr}
+               \\usepackage{enumitem}
+               \\usepackage{graphicx}
+               \\usepackage[colorlinks, linkcolor=black, filecolor=black, urlcolor=black, citecolor=black]{hyperref}
+              [NO-DEFAULT-PACKAGES]
+              [EXTRA]"
+              ("\\chapter{%s}" . "\\section*{%s}")
+              ("\\section{%s}" . "\\section*{%s}")
+              ("\\subsection{%s}" . "\\subsection*{%s}")
+              ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+#+end_src
+#+LaTeX_CLASS: per-file-class
+
+
+#+OPTIONS: toc:nil num:nil email:t
+#+LATEX_CLASS_OPTIONS: [12pt, hidelinks, doc]
+#+LATEX_HEADER: \usepackage{apacite}
+#+LATEX_HEADER: \usepackage{nopageno}
+#+LATEX_HEADER: \linespread{1.2}
+
+# Change footnote to asterisk symbol
+# https://tex.stackexchange.com/questions/826/symbols-instead-of-numbers-as-footnote-markers
+#+LATEX_HEADER: \usepackage[symbol]{footmisc}
+#+LATEX_HEADER: \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+#+MACRO: NEWLINE @@latex:\\@@ @@html:<br>@@
+#+OPTIONS: toc:nil num:nil author:nil date:nil email:nil ^:nil
+
+
+
+* Georgios Diapoulis - Psychoacoustics (Final script - photos)
+(/Instructions how to read the script/:  Emphasis on phrases is used to denote the duration of each image, though this is up to the preference and experience of the editor.  In parentheses I have assigned the image file names.  I have rendered both PNG and SVG files with transparent background.  SVG can be arbitrability transformed to larger or smaller images.)
+
+
+
+5. Psychoacoustics - (Georgios Diapoulis - ESR12)
+
+
+Psychoacoustics is a compound word.  It stems from *Psychology (psi.svg)* and *Acoustics (acoustics.svg)*.  Psychoacoustics is an umbrella term that is used to denote the study of how we respond to sound.  For example, we all know that we will respond differently to extremely loud sounds as opposed to extremely quite sounds.  In the first case, we will most likely get scared and try to cover our ears, whereas in the latter case we will try to do cupped-hand amplification of the sound.
+
+Now, if we would like to *quantify (quantify.svg)* how loud or quite is a sound, we may ask people *what do they think (thinking.svg)* about the loudness of a sound, or investigate limits of our hearing threshold.
+
+This is the very first level of *subjective experience and responses among people may vary considerably (questionnaire.svg [AND] questionnaire-not-so-loud.svg [AND][fn:note] questionnaire-very-loud.svg)*.
+Other type of responses may include *physiological measures, like heart-rate (heart-rate.svg)* and respiratory rate, to *neurophysiological measures like brain responses (brain-responses.svg)*.
+
+More specifically, acousticians aim to quantify how humans respond to different *sounds (sound.svg [AND] sounds-2.svg)*) and *vibrations (sounds-and-vibrations.svg)*.  This may include *machinery- sounds, like ventilation, washing machines, car and tram noise (machinery-noise.svg)*, but also *human-made sounds, like speech (speech.svg [AND/OR][fn:note2] speech-loud.svg)*, *music (music.svg)*, *walking (walking.svg)*, *typing on a keyboard (typing.svg)* and more. To do so, acousticians may study the *characteristics of a particular sound.  For example, we would like to see how loud or bright or sharp is a sound (characteristics.svg)*.  Are there any tonal components in sounds?  Are there any tonal components in noisy sounds?
+
+
+Why this is important? Well, it's important because we can apply this knowledge to different fields.  For  example, *loudness which is the subjective perception of sound pressure level, was used to save energy and improve efficiency of telephone calls (loudness-curve.svg)*.  This is because we know the frequency range of human speech and how we perceive sound pressure levels across this range!
+
+In the music realm, musicians talk about *pitch (pitch.svg).  Pitch is a fundamental characteristic of musical tones, pretty much like the duration of a tone and the loudness of a tone*.  Pitch is the quality that makes it possible to *judge sounds as "higher" (pitch-high.svg) and "lower" (pitch-low.svg)*. It can be described as the periodicity of a tone, but it's much more than that.  For example, we know that a musical tone in piano produces a series of harmonics along with the fundamental frequency.  A paradox in music perception is that we can perceive a musical tone even if the fundamental frequency is missing!
+
+
+Other applications include, the development comfortable cars.  Can we make the drivers' position more comfortable?  Can we reduce noise and vibrations for truck drivers?
+
+
+Now, let's think for a moment the *acoustic conditions in working environments (office.svg), can we make the acoustic environment in open-plan offices less distracting for the employees?*  In such applications we may apply *sound masking.  Sound masking is a way to mask one sound using another sound (masking.svg)*.
+
+For example, in open offices we might use */whitenoise/*[fn:whitenoise] to mask speech sound, which is a common source of distraction for the employees.
+
+For virtual reality applications we are interested in *sound localization applications.  Can we make a movie more real?  Yes, if we have surround sound system, we may apply sound localization techniques to listen whispering sounds next to our ear (HRTF.svg)*.
+
+In my PhD studies I am developing techniques for *auralization of walking sound. Auralization, in analogy to visualization, is a technique used to render audible sounds (walking-sound.svg)*.
+
+More speciffically, I am looking to identify fundamental physical and perceptual characteristics of the sound of footsteps. The ultimate purpose is to develop auralization techniques to generate plausible walking sound.  To do so, I have to assess the quality of auralized walking sound using human responses.
+
+Such developments may be used to study how employees perceive walking sound in open offices.  This is because we already know that speech is the most destructing human-made sound in working environments, but we have not paid much attention to other human made sounds, like walking sound. Thank you!
+
+
+[fn:note] I use [AND] to denote that the images will be shown in a sequential order.
+
+[fn:note2] I use [AND/OR] to denote that is up to the preference of the editor.
+
+[fn:whitenoise] I think only in the last take I used the word /whitenoise/.  In the first takes I was saying "loudspeakers".  Please, find the take with whitenoise if possible.
